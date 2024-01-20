@@ -10,7 +10,7 @@ export const Review:React.FC<{review:any}> = (props) => {
     return(
         <div>
             <div className="col-sm-8 col-md-8">
-                <h5>{props.review.userEmail}</h5>
+                <h5>{props.review.userName}</h5>
                 <div className="row">
                     <div className="col">
                         {dateRender}

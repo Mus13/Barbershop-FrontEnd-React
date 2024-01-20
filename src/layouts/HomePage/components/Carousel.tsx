@@ -34,7 +34,7 @@ export const Carousel = () => {
             setIsLoading(false);
             setHttpError(error.message);
         });
-    }, [])
+    }, []);
 
     if (isLoading) {
         return (
@@ -51,7 +51,7 @@ export const Carousel = () => {
     }
 
     return (
-        <div className="containet-mt-5" style={{ height: 550 }}>
+        <div className="containet-mt-5" >
             <div className="homepage-carousel-title">
                 <h3>Find your barber!</h3>
             </div>
@@ -80,19 +80,27 @@ export const Carousel = () => {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
+            {/**Mobile */}
             <div className="d-lg-none mt-3">
-                <div className="carousel-inner">
-                    {barbers.map((barber, index) => (
-                        <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
-                            <div className="row d-flex justify-content-center align-items-center">
-                                <ReturnBarber barber={barber} key={index} />
+                <div id="mobileCarouselControls" className="carousel slide">
+                    <div className="carousel-inner">
+                        {barbers.map((barber, index) => (
+                            <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
+                                <div className="row d-flex justify-content-center align-items-center">
+                                    <ReturnBarber barber={barber} key={index} />
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
+                    <button className="carousel-control-prev" type="button" data-bs-target="#mobileCarouselControls" data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Previous</span>
+                    </button>
+                    <button className="carousel-control-next" type="button" data-bs-target="#mobileCarouselControls" data-bs-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Next</span>
+                    </button>
                 </div>
-            </div>
-            <div className="homepage-carousel-title mt-3">
-                <Link className="btn btn-outline-secondary btn-lg" to="/barbers">View more..</Link>
             </div>
         </div>
 
